@@ -27,6 +27,9 @@ public class PostulantServiceImpl implements PostulantServices {
     public Postulants Modifier(Postulants postulants, Integer Id_postulant) {
         Postulants postulants1=this.postulantRepository.findById(Id_postulant).orElseThrow();
         postulants1.setNom(postulants.getNom());
+        postulants1.setPrenom(postulants.getPrenom());
+        postulants1.setEmail(postulants.getEmail());
+        postulants1.setNumero(postulants.getNumero());
         return postulantRepository.save(postulants1);
     }
 
