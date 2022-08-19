@@ -12,7 +12,7 @@ public class Postulants {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id_postulant;
+    private Integer Id_postulant;
     private String nom;
     private String prenom;
     private String email;
