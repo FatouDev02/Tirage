@@ -19,4 +19,8 @@ public class ListImport {
     List<Postulants> liste_postulant;
 
 
+    @OneToMany(mappedBy = "listImport")
+    List<Postulants> liste_postulant;
+
+
 }
