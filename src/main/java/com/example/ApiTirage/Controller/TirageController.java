@@ -37,7 +37,9 @@ public class TirageController {
         return tirageService.liste();
     }
 
-    @GetMapping("/tirage/{id_liste}/{nombre}")
+
+
+    @GetMapping("/{id_liste}/{nombre}")
     public List<Postulants> faireLeTrie(@PathVariable Long id_liste, @PathVariable Long nombre){
         ListImport liste = listeService.recuperer(id_liste);
 
@@ -45,19 +47,4 @@ public class TirageController {
         return liste_trie;
     }
 
-    @GetMapping("/tirage/{id_liste}/{nombre}")
-    public List<Postulants> faireLeTrie(@PathVariable Long id_liste, @PathVariable Long nombre){
-        ListImport liste = listeService.recuperer(id_liste);
-
-        List<Postulants> liste_trie = tirageService.faireTirage(liste.getListe_postulant(), nombre);
-        return liste_trie;
-    }
-
-    @GetMapping("/tirage/{id_liste}/{nombre}")
-    public List<Postulants> faireLeTrie(@PathVariable Long id_liste, @PathVariable Long nombre){
-        ListImport liste = listeService.recuperer(id_liste);
-
-        List<Postulants> liste_trie = tirageService.faireTirage(liste.getListe_postulant(), nombre);
-        return liste_trie;
-    }
 }
