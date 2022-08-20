@@ -7,8 +7,11 @@ import java.util.List;
 
 @Service
 public interface ListeService {
-    ListImport ajouter(ListImport list);
+    ListImport ajouter(ListImport listImport);
 
+    ListImport modifierliste(ListImport listImport);
+
+    ListImport afficherParLibelle(String libelle);
     String supprimer(Long id_list);
 
     List<ListImport> lister();

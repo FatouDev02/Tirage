@@ -16,18 +16,20 @@ import java.util.List;
 public class TirageController {
     private final TirageService tirageService;
 
-    @PostMapping("/creer")
+    @PostMapping("/add")
     public Tirage creer(@RequestBody Tirage tirage){
+
         return tirageService.creer(tirage);
     }
 
-    @DeleteMapping("/supprimer")
+    @DeleteMapping("/delete/{id_tirage}")
     public String supprimer(@PathVariable Long id_tirage){
         return tirageService.supprimer(id_tirage);
     }
 
-    @GetMapping("/lister")
+    @GetMapping("/list")
     public List<Tirage> lister(){
-        return lister();
+
+        return tirageService.liste();
     }
 }
