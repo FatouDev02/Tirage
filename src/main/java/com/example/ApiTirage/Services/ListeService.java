@@ -15,4 +15,6 @@ public interface ListeService {
     String supprimer(Long id_list);
 
     List<ListImport> lister();
+
+    ListImport recuperer(Long id);
 }
