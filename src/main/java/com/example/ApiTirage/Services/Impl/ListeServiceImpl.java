@@ -4,6 +4,7 @@ import com.example.ApiTirage.Models.ListImport;
 import com.example.ApiTirage.Repository.ListeRepository;
 import com.example.ApiTirage.Services.ListeService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -11,16 +12,27 @@ import java.util.List;
 @AllArgsConstructor
 @Component
 public class ListeServiceImpl implements ListeService {
-    private final ListeRepository listeRepository;
+    @Autowired
+     ListeRepository listeRepository;
     @Override
     public ListImport ajouter(ListImport list) {
         return listeRepository.save(list);
     }
 
     @Override
+    public ListImport modifierliste(ListImport listImport) {
+        return null;
+    }
+
+    @Override
+    public ListImport afficherParLibelle(String libelle) {
+        return null;
+    }
+
+    @Override
     public String supprimer(Long id_list) {
         listeRepository.deleteById(id_list);
-        return "La liste a été supprimée avec succée !";
+        return "La liste a été supprimée avec succès !";
     }
 
     @Override

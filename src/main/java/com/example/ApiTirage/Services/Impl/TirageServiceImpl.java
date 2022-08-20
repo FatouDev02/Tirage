@@ -21,17 +21,19 @@ public class TirageServiceImpl implements TirageService {
     private final PostulantRepository postulantRepository;
     @Override
     public Tirage creer(Tirage tirage) {
+
         return tirageRepository.save(tirage);
     }
 
     @Override
     public String supprimer(Long id_tirage) {
         tirageRepository.deleteById(id_tirage);
-        return "Le tirage a été supprimé avec succé !";
+        return "Le tirage a été supprimé avec succès !";
     }
 
     @Override
     public List<Tirage> liste() {
+
         return tirageRepository.findAll();
     }
 

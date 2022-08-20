@@ -1,24 +1,18 @@
 package com.example.ApiTirage.Models;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
+import lombok.Data;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table
-@Getter
-@Setter
-@NoArgsConstructor
+@Data
 public class ListImport {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_list;
     private String libelle;
-    private Date date;
+    private Date dateimport;
 
 
     @OneToMany(mappedBy = "listImport")

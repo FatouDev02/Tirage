@@ -4,6 +4,7 @@ import com.example.ApiTirage.Models.Postulants;
 import com.example.ApiTirage.Repository.PostulantRepository;
 import com.example.ApiTirage.Services.PostulantServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,8 +15,9 @@ public class PostulantServiceImpl implements PostulantServices {
     PostulantRepository postulantRepository;
 
     @Override
-    public Postulants Ajout(Postulants pays) {
-        return this.postulantRepository.save(pays);
+    public Postulants Ajout(Postulants postulants) {
+
+        return this.postulantRepository.save(postulants);
     }
 
     @Override
@@ -25,9 +27,17 @@ public class PostulantServiceImpl implements PostulantServices {
 
     @Override
     public Postulants Modifier(Postulants postulants, Integer Id_postulant) {
-        Postulants postulants1=this.postulantRepository.findById(Id_postulant).orElseThrow();
-        postulants1.setNom(postulants.getNom());
-        return postulantRepository.save(postulants1);
+
+        return postulantRepository.findById(Id_postulant)
+                .map(postulants1 -> {
+                    postulants1.setNom(postulants.getNom());
+                    postulants1.setPrenom(postulants.getPrenom());
+                    postulants1.setEmail(postulants.getEmail());
+                    postulants1.setNumero(postulants.getNumero());
+                    return postulantRepository.save(postulants1);
+                }).orElseThrow(() -> new RuntimeException("Cet postulant n'existe pas"));
+
+
     }
 
     @Override
@@ -35,4 +45,7 @@ public class PostulantServiceImpl implements PostulantServices {
          this.postulantRepository.deleteById(Id_postulant);
          return "Supprimé avec succes";
     }
+
+
+
 }
