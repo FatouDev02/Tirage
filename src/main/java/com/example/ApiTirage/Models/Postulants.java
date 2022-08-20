@@ -3,6 +3,7 @@ package com.example.ApiTirage.Models;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -18,4 +19,12 @@ public class Postulants {
 
     @ManyToOne
     ListImport listImport;
+
+    @ManyToMany
+    @JoinTable(
+            name = "PostulantTirage",
+            joinColumns = @JoinColumn(name="Postulant_id"),
+            inverseJoinColumns = @JoinColumn(name = "tirage_id")
+    )
+    List<Tirage> tirages;
 }

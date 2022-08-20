@@ -12,5 +12,5 @@ public interface TirageService {
     String supprimer(Long id_tirage);
     List<Tirage> liste();
 
-    List<Postulants> faireTirage(List<Postulants> postulants, Long nombre);
+    List<Postulants> faireTirage(List<Postulants> postulants, int nombre_personnes);
 }

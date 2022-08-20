@@ -38,13 +38,14 @@ public class TirageServiceImpl implements TirageService {
     }
 
     @Override
-    public List<Postulants> faireTirage(List<Postulants> postulants, Long nombre) {
-
-        List<Postulants> postulantsList;
+    public List<Postulants> faireTirage(List<Postulants> postulants, int nombre_personnes) {
+        //la méthode pour faire des nombre aléatoire "Random"
         Random random = new Random();
+        // liste qui va récupérer les nombres aléatoire
         List<Integer> listes_numero = new ArrayList<>();
+        // liste pour récupérer le postulants triés
         List<Postulants> postulants_tries = new ArrayList<>();
-        for (int i = 0; i < nombre; i++) {
+        for (int i = 0; i < nombre_personnes; i++) {
             int numero;
             numero = random.nextInt(postulants.size());
             while (numero == 0 || listes_numero.contains(numero)) {
@@ -52,9 +53,10 @@ public class TirageServiceImpl implements TirageService {
             }
             listes_numero.add(numero);
 
-            postulants_tries.add(postulantRepository.findById(numero).orElseThrow());
+            postulants_tries.add(postulantRepository.findById((long) numero).orElseThrow());
 
         }
+
         return postulants_tries;
     }
 }

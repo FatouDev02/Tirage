@@ -26,9 +26,9 @@ public class PostulantServiceImpl implements PostulantServices {
     }
 
     @Override
-    public Postulants Modifier(Postulants postulants, Integer Id_postulant) {
+    public Postulants Modifier(Postulants postulants, Long Id_postulant) {
 
-        return postulantRepository.findById(Id_postulant)
+        return postulantRepository.findById((long) Math.toIntExact(Id_postulant))
                 .map(postulants1 -> {
                     postulants1.setNom(postulants.getNom());
                     postulants1.setPrenom(postulants.getPrenom());
@@ -41,7 +41,7 @@ public class PostulantServiceImpl implements PostulantServices {
     }
 
     @Override
-    public String SupprimerbyId(Integer Id_postulant) {
+    public String SupprimerbyId(Long Id_postulant) {
          this.postulantRepository.deleteById(Id_postulant);
          return "Supprimé avec succes";
     }

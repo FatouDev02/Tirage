@@ -30,15 +30,15 @@ public class PostulantsController {
     }
 
     @PutMapping("/update/{Id_postulant}")
-    public String update(@RequestBody Postulants postulants, @PathVariable Integer Id_postulant) {
+    public String update(@RequestBody Postulants postulants, @PathVariable Long Id_postulant) {
         this.postulantServices.Modifier(postulants, Id_postulant);
         return "Mise à jours validée";
 
     }
 
     @DeleteMapping("/delete/{Id_Postulant}")
-    public String delete(@PathVariable Integer Id_postulant) {
-        this.postulantServices.SupprimerbyId(Id_postulant);
+    public String delete(@PathVariable Long Id_postulant) {
+        postulantServices.SupprimerbyId(Id_postulant);
         return "Postulant supprimé!!!";
     }
 
