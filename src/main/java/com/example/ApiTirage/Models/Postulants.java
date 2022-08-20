@@ -2,10 +2,8 @@ package com.example.ApiTirage.Models;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 @Data
 @Entity
 public class Postulants {
@@ -17,4 +15,7 @@ public class Postulants {
     private String prenom;
     private String email;
     private Integer numero;
+
+    @ManyToOne
+    private ListImport listImport;
 }

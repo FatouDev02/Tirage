@@ -27,4 +27,10 @@ public class ListeServiceImpl implements ListeService {
     public List<ListImport> lister() {
         return listeRepository.findAll();
     }
+
+    @Override
+    public ListImport recuperer(Long id_liste) {
+        ListImport liste_recuperer = listeRepository.findById(id_liste).orElseThrow();
+        return liste_recuperer;
+    }
 }

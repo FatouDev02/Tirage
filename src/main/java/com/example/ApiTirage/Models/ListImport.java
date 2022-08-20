@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table
@@ -18,6 +19,10 @@ public class ListImport {
     private Long id_list;
     private String libelle;
     private Date date;
+
+
+    @OneToMany(mappedBy = "listImport")
+    List<Postulants> liste_postulant;
 
 
 }
