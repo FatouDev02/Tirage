@@ -9,5 +9,4 @@ public interface PostulantServices {
     List<Postulants> liste();
     Postulants Modifier(Postulants pays,Long Id_postulant);
     String SupprimerbyId(Long Id_postulant);
-
 }

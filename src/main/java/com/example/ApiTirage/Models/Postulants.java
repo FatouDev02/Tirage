@@ -15,11 +15,11 @@ public class Postulants {
     private String nom;
     private String prenom;
     private String email;
-    private String numero;
+    private Long numero;
 
     @ManyToOne
     ListImport listImport;
-
+//(mappedBy = "postulants")
     @ManyToMany
     @JoinTable(
             name = "PostulantTirage",

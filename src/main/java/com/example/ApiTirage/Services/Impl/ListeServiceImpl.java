@@ -4,13 +4,16 @@ import com.example.ApiTirage.Models.ListImport;
 import com.example.ApiTirage.Repository.ListeRepository;
 import com.example.ApiTirage.Services.ListeService;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@AllArgsConstructor
-@Component
+@Service
+@Data
+
 public class ListeServiceImpl implements ListeService {
     @Autowired
      ListeRepository listeRepository;

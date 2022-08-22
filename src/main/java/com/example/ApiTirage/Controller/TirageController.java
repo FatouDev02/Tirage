@@ -40,9 +40,11 @@ public class TirageController {
 
 
     @GetMapping("/list/{id_liste}/{nombre_personnes}")
-    public List<Postulants> faireLeTrie(@PathVariable Long id_liste, @PathVariable int nombre_personnes){
+    public List<Postulants> faireLeTrie(@PathVariable("id_liste") Long id_liste, @PathVariable("nombre_personnes") Long nombre_personnes){
         ListImport liste = listeService.recuperer(id_liste);
         List<Postulants> liste_trie = tirageService.faireTirage(liste.getListe_postulant(), nombre_personnes);
+
+        System.out.println(liste);
         return liste_trie;
     }
 

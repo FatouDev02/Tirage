@@ -19,7 +19,7 @@ public class Tirage {
    // private int nombre_personnes;
 
     @ManyToMany(mappedBy = "tirages")
-    List<Postulants> postulant1;
+    List<Postulants> postulants;
 
 
 

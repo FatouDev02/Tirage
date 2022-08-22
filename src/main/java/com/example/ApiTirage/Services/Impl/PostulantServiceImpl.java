@@ -48,4 +48,5 @@ public class PostulantServiceImpl implements PostulantServices {
 
 
 
+
 }
