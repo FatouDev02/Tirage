@@ -37,6 +37,7 @@ public class PostulantsController {
         return "Mise à jours validée";
 
     }
+    //@pathvariabe recupèrè les valeurs au niveau de l'url
 
     @DeleteMapping("/delete/{Id_Postulant}")
     public String delete(@PathVariable Long Id_postulant) {
