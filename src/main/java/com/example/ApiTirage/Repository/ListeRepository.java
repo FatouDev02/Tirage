@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ListeRepository extends JpaRepository<ListImport, Long> {
+
+//recuperer la liste par son libelle
+    ListImport findByLibelle(String libelle);
 }

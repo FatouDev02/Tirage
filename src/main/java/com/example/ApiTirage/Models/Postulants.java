@@ -15,16 +15,16 @@ public class Postulants {
     private String nom;
     private String prenom;
     private String email;
-    private Long numero;
-
-    @ManyToOne
+    private String numero;
+//relation 1 , n avec la liste
+   @ManyToOne
     ListImport listImport;
-//(mappedBy = "postulants")
+// relation n,n,avec la classe tirage
     @ManyToMany
-    @JoinTable(
-            name = "PostulantTirage",
-            joinColumns = @JoinColumn(name="Postulant_id"),
-            inverseJoinColumns = @JoinColumn(name = "tirage_id")
-    )
+//    @JoinTable(
+//            name = "PostulantTirage",
+//            joinColumns = @JoinColumn(name="Postulant_id"),
+//            inverseJoinColumns = @JoinColumn(name = "tirage_id")
+//    )
     List<Tirage> tirages;
 }

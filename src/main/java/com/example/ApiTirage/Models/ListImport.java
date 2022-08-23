@@ -14,8 +14,8 @@ public class ListImport {
     private String libelle;
     private Date dateimport;
 
-    @OneToMany(mappedBy = "listImport")
-    List<Postulants> liste_postulant;
+//    @OneToMany(mappedBy = "listImport")
+//    List<Postulants> liste_postulant;
 
 
 }

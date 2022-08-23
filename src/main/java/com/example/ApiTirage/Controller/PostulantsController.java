@@ -2,6 +2,7 @@ package com.example.ApiTirage.Controller;
 
 import com.example.ApiTirage.Models.Postulants;
 import com.example.ApiTirage.Services.PostulantServices;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/Postulant")
+@AllArgsConstructor
 public class PostulantsController {
     @Autowired
     PostulantServices postulantServices;
@@ -24,10 +26,10 @@ public class PostulantsController {
         return this.postulantServices.Ajout(postulants);
     }
 
-    @GetMapping("/list")
-    public List<Postulants> l() {
-        return postulantServices.liste();
-    }
+//    @GetMapping("/list")
+//    public List<Postulants> l() {
+//        return postulantServices.
+//    }
 
     @PutMapping("/update/{Id_postulant}")
     public String update(@RequestBody Postulants postulants, @PathVariable Long Id_postulant) {

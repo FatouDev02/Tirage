@@ -1,34 +1,25 @@
 package com.example.ApiTirage.Services.Impl;
 
-import com.example.ApiTirage.Models.ListImport;
 import com.example.ApiTirage.Models.Postulants;
-import com.example.ApiTirage.Models.PostulantsTries;
 import com.example.ApiTirage.Models.Tirage;
-import com.example.ApiTirage.Repository.ListeRepository;
 import com.example.ApiTirage.Repository.PostulantRepository;
-import com.example.ApiTirage.Repository.PostulantsTriesRepository;
 import com.example.ApiTirage.Repository.TirageRepository;
 import com.example.ApiTirage.Services.TirageService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 @AllArgsConstructor
 @Data
-@Service
+@Component
 public class TirageServiceImpl implements TirageService {
-    @Autowired
-    ListeRepository listeRepository;
-    @Autowired
-    TirageRepository tirageRepository;
-    @Autowired
-    PostulantRepository postulantRepository;
-    @Autowired
-    PostulantsTriesRepository postulantsTriesRepository;
+    private final TirageRepository tirageRepository;
+    private final PostulantRepository postulantRepository;
     @Override
     public Tirage creer(Tirage tirage) {
 
@@ -47,30 +38,37 @@ public class TirageServiceImpl implements TirageService {
         return tirageRepository.findAll();
     }
 
+
+
+
+
     @Override
-    public List<Postulants> faireTirage(List<Postulants> postulants, Long nombre_personnes) {
-        ListImport liste = new ListImport();
-        Postulants postulant = new Postulants();
-        // liste qui va récupérer les nombres aléatoire
-        List<Integer> listes_numero = new ArrayList<>();
-        // liste pour récupérer le postulants trié
-        Collections.shuffle(postulants);
+    public List<Postulants> faireTirage(@RequestBody Tirage tirage, List<Postulants> listesended, int nbre) {
+        //la méthode pour faire des nombres aléatoire "Random"
+        Random random = new Random();
+
+        // liste pour récupérer les postulants triés(recois le trie)
         List<Postulants> postulants_tries = new ArrayList<>();
-        List<Postulants> postrecp = postulantRepository.findByListImport(liste.getId_list());
-        for (int i = 1; i <= nombre_personnes; i++) {
-            PostulantsTries pst = new PostulantsTries();
-            Postulants po = postrecp.get(i);
-            pst.setPrenom(po.getPrenom());
-            pst.setNom(po.getPrenom());
-            pst.setNumero(po.getNumero());
-            pst.setEmail(po.getEmail());
+        for (int i = 0; i < nbre; i++) {
 
-            postulantsTriesRepository.save(pst);
-
+            //un id qui va recevoir les index choisit par random
+            Integer id_choose = random.nextInt(listesended.size());
+            //cette liste va recevoir les id_choisit par random(ajout des index)
+            postulants_tries.add(listesended.get(id_choose));
+            //on supprime la valeur deja choisit dans la liste envoyée
+            listesended.remove(listesended.get(id_choose));
         }
-        Tirage tirage = new Tirage();
-        tirage.setDate_tirage(new Date());
-        tirage.setLibelle_tirage("Resultat du " + liste.getLibelle());
+        //table associative
+        Tirage t=tirageRepository.save(tirage);
+        for( Postulants p:postulants_tries){
+            p.getTirages().add(t);
+            postulantRepository.save(p);
+        }
+
+        tirageRepository.save(tirage);
+
         return postulants_tries;
     }
+
+
 }

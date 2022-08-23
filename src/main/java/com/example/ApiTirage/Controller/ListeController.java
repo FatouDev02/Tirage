@@ -17,7 +17,6 @@ import java.util.Date;
 import java.util.List;
 
 @AllArgsConstructor
-@Component
 @RequestMapping("/liste")
 @RestController
 public class ListeController {
@@ -56,8 +55,11 @@ public class ListeController {
                 //on parcourt la liste par une boucle for compteur p
                 for (Postulants p: postulantsList){
 
-                    p.setListImport(listImport1);
-                    postulantServices.Ajout(p);
+                    if(p.getNom()!=null & p.getEmail()!=null & p.getNumero()!=null){
+                        p.setListImport(listImport1);
+                        postulantServices.Ajout(p);
+                    }
+
 
                 }
             }
