@@ -51,7 +51,10 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
+<!--Apache POI, un projet géré par l’Apache Software Foundation,
+ fournit des bibliothèques
+Java pures pour la lecture et l’écriture de fichiers dans des formats Microsoft Office,
+ tels que Word, PowerPoint et Excel.-->
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-ooxml</artifactId>

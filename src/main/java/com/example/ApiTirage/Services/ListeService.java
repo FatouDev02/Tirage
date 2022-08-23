@@ -16,5 +16,5 @@ public interface ListeService {
 
     List<ListImport> lister();
 
-    ListImport recuperer(Long id);
+    ListImport recuperer(String libelle);
 }
