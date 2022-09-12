@@ -6,15 +6,15 @@ import com.example.ApiTirage.Services.ListeService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @AllArgsConstructor
-@Component
+@Service
 public class ListeServiceImpl implements ListeService {
     @Autowired
-    ListeRepository listeRepository;
-
+     ListeRepository listeRepository;
     @Override
     public ListImport ajouter(ListImport list) {
         return listeRepository.save(list);
@@ -26,10 +26,9 @@ public class ListeServiceImpl implements ListeService {
     }
 
     @Override
-    public ListImport afficherParId(Long id_list) {
-        return this.listeRepository.findById(id_list).get();
+    public ListImport afficherParLibelle(String libelle) {
+        return null;
     }
-
 
     @Override
     public String supprimer(Long id_list) {
@@ -44,8 +43,6 @@ public class ListeServiceImpl implements ListeService {
 
     @Override
     public ListImport recuperer(String libelle) {
-        ListImport listImport=listeRepository.findByLibelle(libelle);
-        //ListImport liste_recuperer = listeRepository.findById(id_liste).orElseThrow();
-        return listImport;
+        return listeRepository.findByLibelle(libelle);
     }
 }
