@@ -74,7 +74,7 @@ public class ExcelFileConfig {
                                 break;
                             //3eme colonne contenant le nom
                             case 2:
-                                postulants1.setNumero(Long.valueOf(formatter.formatCellValue(currentcell)));
+                                postulants1.setNumero(String.valueOf(Long.valueOf(formatter.formatCellValue(currentcell))));
                                 break;
                             //4eme colonne contenant le nom
                             case 3:

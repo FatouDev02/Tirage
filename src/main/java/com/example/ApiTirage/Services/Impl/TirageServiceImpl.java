@@ -60,12 +60,15 @@ public class TirageServiceImpl implements TirageService {
         }
         //table associative
         Tirage t=tirageRepository.save(tirage);
+
         for( Postulants p:postulants_tries){
             p.getTirages().add(t);
+
             postulantRepository.save(p);
         }
 
         tirageRepository.save(tirage);
+
 
         return postulants_tries;
     }

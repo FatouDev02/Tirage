@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/Postulant")
+@CrossOrigin(origins = "http://localhost:4200/")
 @AllArgsConstructor
 public class PostulantsController {
     @Autowired
@@ -26,10 +27,10 @@ public class PostulantsController {
         return this.postulantServices.Ajout(postulants);
     }
 
-//    @GetMapping("/list")
-//    public List<Postulants> l() {
-//        return postulantServices.
-//    }
+    @GetMapping("/list")
+    public List<Postulants> lire() {
+        return postulantServices.lister();
+    }
 
     @PutMapping("/update/{Id_postulant}")
     public String update(@RequestBody Postulants postulants, @PathVariable Long Id_postulant) {
