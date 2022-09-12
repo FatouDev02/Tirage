@@ -26,9 +26,11 @@ public class ListeServiceImpl implements ListeService {
     }
 
     @Override
-    public ListImport afficherParLibelle(String libelle) {
+    public ListImport afficherParId(Long id_list) {
         return null;
     }
+
+
 
     @Override
     public String supprimer(Long id_list) {
