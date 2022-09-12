@@ -32,6 +32,11 @@ public class PostulantsController {
         return postulantServices.lister();
     }
 
+    @GetMapping("/liste/{id_list}")
+    public Object recupParliste(@PathVariable long id_list){
+       return postulantServices.recupParliste(id_list);
+    }
+
     @PutMapping("/update/{Id_postulant}")
     public String update(@RequestBody Postulants postulants, @PathVariable Long Id_postulant) {
         this.postulantServices.Modifier(postulants, Id_postulant);

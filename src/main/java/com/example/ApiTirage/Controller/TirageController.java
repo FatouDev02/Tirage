@@ -16,6 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/tirage")
+@CrossOrigin(origins = "http://localhost:4200/")
 public class TirageController {
     private final TirageService tirageService;
     private final ListeService listeService;

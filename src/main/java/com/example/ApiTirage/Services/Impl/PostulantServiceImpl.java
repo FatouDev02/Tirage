@@ -27,6 +27,17 @@ public class PostulantServiceImpl implements PostulantServices {
     }
 
     @Override
+    public Object recupParliste(long id_list) {
+        List<Postulants> retrouve = postulantRepository.findAll(id_list);
+//            System.out.println(retrouve);
+        if (retrouve.size() != 0) {
+            return retrouve;
+        }else{
+            return "Désolé ce cette liste introuvable !!";
+        }
+    }
+
+    @Override
     public List<Postulants> liste(ListImport listImport) {
         return postulantRepository.findByListImport(listImport);
     }
