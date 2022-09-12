@@ -1,5 +1,6 @@
 package com.example.ApiTirage.Services.Impl;
 
+import com.example.ApiTirage.Models.ListImport;
 import com.example.ApiTirage.Models.Postulants;
 import com.example.ApiTirage.Repository.PostulantRepository;
 import com.example.ApiTirage.Services.PostulantServices;
@@ -21,9 +22,10 @@ public class PostulantServiceImpl implements PostulantServices {
     }
 
     @Override
-    public List<Postulants> liste() {
-        return this.postulantRepository.findAll();
+    public List<Postulants> liste(ListImport listImport) {
+       return this.postulantRepository.findAll();
     }
+
 
     @Override
     public Postulants Modifier(Postulants postulants, Long Id_postulant) {

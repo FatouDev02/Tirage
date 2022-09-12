@@ -3,6 +3,7 @@ package com.example.ApiTirage.Models;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -26,5 +27,5 @@ public class Postulants {
             joinColumns = @JoinColumn(name="Postulant_id"),
             inverseJoinColumns = @JoinColumn(name = "tirage_id")
     )
-    List<Tirage> tirages;
+    List<Tirage> tirages=new ArrayList<>();
 }

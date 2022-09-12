@@ -1,5 +1,6 @@
 package com.example.ApiTirage.Controller;
 
+import com.example.ApiTirage.Models.ListImport;
 import com.example.ApiTirage.Models.Postulants;
 import com.example.ApiTirage.Services.PostulantServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/Postulant")
+@CrossOrigin
 public class PostulantsController {
     @Autowired
     PostulantServices postulantServices;
@@ -25,8 +27,8 @@ public class PostulantsController {
     }
 
     @GetMapping("/list")
-    public List<Postulants> l() {
-        return postulantServices.liste();
+    public List<Postulants> l(@RequestBody ListImport l) {
+        return postulantServices.liste(l);
     }
 
     @PutMapping("/update/{Id_postulant}")

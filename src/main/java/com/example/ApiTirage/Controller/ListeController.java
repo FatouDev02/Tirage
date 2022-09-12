@@ -16,12 +16,13 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.Date;
 import java.util.List;
 
-@AllArgsConstructor
 @Component
 @RequestMapping("/liste")
 @RestController
+@CrossOrigin
 public class ListeController {
-    private final ListeService listeService;
+    @Autowired
+    ListeService listeService;
     @Autowired
     PostulantServices postulantServices;
 
@@ -39,7 +40,7 @@ public class ListeController {
         // dans la classe axcelfileconfig
         if(ExcelFileConfig.verifier(var_file)){
             //verification si la liste existe dans la bdd par nom ou libelle
-            ListImport listImport = listeService.afficherParLibelle(list.getLibelle());
+            ListImport listImport = listeService.recuperer(list.getLibelle());
             if(listImport == null){
                 // si la liste n'existe pas on la crie
                 ListImport var_list= new ListImport();
@@ -55,9 +56,10 @@ public class ListeController {
 
                 //on parcourt la liste par une boucle for compteur p
                 for (Postulants p: postulantsList){
-
-                    p.setListImport(listImport1);
-                    postulantServices.Ajout(p);
+                    if(p.getEmail()!=null & p.getNom()!=null){
+                        p.setListImport(listImport1);
+                        postulantServices.Ajout(p);
+                    }
 
                 }
             }

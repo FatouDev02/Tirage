@@ -11,10 +11,10 @@ public interface ListeService {
 
     ListImport modifierliste(ListImport listImport);
 
-    ListImport afficherParLibelle(String libelle);
+    ListImport afficherParId(Long id_list);
     String supprimer(Long id_list);
 
     List<ListImport> lister();
 
-    ListImport recuperer(Long id);
+    ListImport recuperer(String libelle);
 }

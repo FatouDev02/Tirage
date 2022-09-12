@@ -16,7 +16,8 @@ public class Tirage {
     private Long id_tirage;
     private  String libelle_tirage;
     private Date date_tirage;
-   // private int nombre_personnes;
+    private int nbredepostulants;
+            // private int nombre_personnes;
 
     @ManyToMany(mappedBy = "tirages")
     List<Postulants> postulant1;

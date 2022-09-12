@@ -1,5 +1,6 @@
 package com.example.ApiTirage.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import javax.persistence.*;
 import java.util.Date;
@@ -14,6 +15,7 @@ public class ListImport {
     private String libelle;
     private Date dateimport;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "listImport")
     List<Postulants> liste_postulant;
 

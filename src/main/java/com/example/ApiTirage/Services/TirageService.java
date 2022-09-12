@@ -13,4 +13,5 @@ public interface TirageService {
     List<Tirage> liste();
 
     List<Postulants> faireTirage(List<Postulants> postulants, int nombre_personnes);
+    List<Postulants> creerTirage(Tirage tirage,List<Postulants> postulants, int nombre_personnes);
 }

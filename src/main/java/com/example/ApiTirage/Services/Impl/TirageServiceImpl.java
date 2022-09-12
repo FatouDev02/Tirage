@@ -59,4 +59,28 @@ public class TirageServiceImpl implements TirageService {
 
         return postulants_tries;
     }
+
+    @Override
+    public List<Postulants> creerTirage(Tirage tirage, List<Postulants> postulants, int nombre_personnes) {
+        Random random = new Random();
+        // liste qui va récupérer les nombres aléatoire
+
+        List<Postulants> list = new ArrayList<>();
+        for (int i = 0; i < nombre_personnes; i++) {
+            int numero;
+            numero = random.nextInt(postulants.size());
+
+            list.add(postulants.get(numero));
+            postulants.remove(postulants.get(numero));
+
+        }
+        Tirage tirage1=tirageRepository.save(tirage);
+        for(Postulants p:list){
+            p.getTirages().add(tirage1);
+            postulantRepository.save(p);
+
+        }
+        tirageRepository.save(tirage);
+        return  list;
+    }
 }
