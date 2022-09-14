@@ -10,4 +10,11 @@ import javax.persistence.Transient;
 public interface TirageRepository extends JpaRepository<Tirage, Long> {
 
 
+    @Query (value = "SELECT COUNT(id_tirage) FROM tirage",nativeQuery = true)
+   public String nombredetirage();
+
+    @Query (value = "select count (id_tirage) FROM tirage",nativeQuery = true)
+    public String nombreTirageParliste();
+
+
 }

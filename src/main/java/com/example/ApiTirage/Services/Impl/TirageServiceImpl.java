@@ -83,4 +83,14 @@ public class TirageServiceImpl implements TirageService {
         tirageRepository.save(tirage);
         return  list;
     }
+
+    @Override
+    public String nombretirage() {
+        return tirageRepository.nombredetirage();
+    }
+
+    @Override
+    public String nombretirageparliste() {
+        return tirageRepository.nombreTirageParliste();
+    }
 }

@@ -85,7 +85,18 @@ public class TirageController {
         // List<Postulants> liste_trie = tirageService.faireTirage(liste.getListe_postulant());
 
     }
+//////////////////////////////////////////////////////
+@GetMapping("/ntirage")
 
+public String nombretirage() {
+    return tirageService.nombretirage();
+}
+
+    @GetMapping("/ntirageliste")
+
+    public String nombretirageparliste() {
+        return tirageService.nombretirageparliste();
+    }
 
     @PostMapping("/{libelle}/{nombre_personnes}")
     public List<Postulants> faireLeTrie(@PathVariable String libelle, @PathVariable int nombre_personnes){
