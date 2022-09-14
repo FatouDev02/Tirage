@@ -13,6 +13,7 @@ public class ListImport {
     private Long id_list;
     private String libelle;
     private Date dateimport;
+    //private Long nombre_tirage;
 
 //    @OneToMany(mappedBy = "listImport")
 //    List<Postulants> liste_postulant;

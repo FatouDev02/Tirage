@@ -21,8 +21,12 @@ public class ListeServiceImpl implements ListeService {
     }
 
     @Override
-    public ListImport modifierliste(ListImport listImport) {
-        return null;
+    public ListImport modifierliste(long id) {
+        return null; //listeRepository.findById(id)
+//                .map(l -> {
+//                    l.setNombre_tirage(l.getNombre_tirage()+1);
+//                    return listeRepository.save(l);
+//                } ).orElseThrow(() -> new RuntimeException("Cette liste n'existe pas"));
     }
 
     @Override

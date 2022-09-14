@@ -38,8 +38,27 @@ public class TirageServiceImpl implements TirageService {
         return tirageRepository.findAll();
     }
 
+    @Override
+    public Object tirageParListe(long id) {
+        List<Object> retrouve = tirageRepository.findAllByLibelleListe(id);
+//            System.out.println(retrouve);
+        if (retrouve.size() != 0) {
+            return retrouve;
+        }else{
+            return "Désolé ce cette liste introuvable !!";
+        }
+    }
 
-
+    @Override
+    public Object listerParLibelle(String libelle_tirage) {
+        List<Tirage> retrouve = tirageRepository.findAll(libelle_tirage);
+//            System.out.println(retrouve);
+        if (retrouve.size() != 0) {
+            return retrouve;
+        }else{
+            return "Désolé ce cette liste introuvable !!";
+        }
+    }
 
 
     @Override

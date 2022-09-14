@@ -9,7 +9,7 @@ import java.util.List;
 public interface ListeService {
     ListImport ajouter(ListImport listImport);
 
-    ListImport modifierliste(ListImport listImport);
+    ListImport modifierliste(long id);
 
     ListImport afficherParLibelle(String libelle);
     String supprimer(Long id_list);

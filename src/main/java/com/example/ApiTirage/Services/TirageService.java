@@ -12,6 +12,8 @@ public interface TirageService {
     Tirage creer(Tirage tirage);
     String supprimer(Long id_tirage);
     List<Tirage> liste();
+    Object tirageParListe(long id);
+    Object listerParLibelle(String libelle_tirage);
     List<Postulants> faireTirage( Tirage tirage, List<Postulants> listesended, int nbre);
 
 }

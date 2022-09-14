@@ -45,6 +45,7 @@ public class ListeController {
                 ListImport var_list= new ListImport();
                 var_list.setDateimport(new Date());//on donne la date
                 var_list.setLibelle(list.getLibelle());// on donne le libelle
+                //var_list.setNombre_tirage(0L);
 
                 //on récupère la date et le libelle donné au nouvel objet listimpor1
                 ListImport listImport1=listeService.ajouter(var_list);

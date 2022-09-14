@@ -40,10 +40,21 @@ public class TirageController {
         return tirageService.liste();
     }
 
+    @GetMapping("/liste/{libelle_tirage}")
+    public Object listerParLibelle(@PathVariable String libelle_tirage){
+        return tirageService.listerParLibelle(libelle_tirage);
+    }
+
+    // RECUPER LES POSTULANTS TRIES PAR LA LIBELLE DE LA LISTE
+    @GetMapping("/postulants/{id}")
+    public Object tirageParListe(@PathVariable long id){
+        return tirageService.tirageParListe(id);
+    }
 
     @PostMapping("/{libelle_tirage}/{nombre}")
     public Object  create(@PathVariable("libelle_tirage") String libelle, @PathVariable("nombre") int nbre){
         ListImport listImport=listeService.recuperer(libelle);
+//        listeService.modifierliste(listImport.getId_list());
         if(listImport !=null){
             Tirage tirage=new Tirage();
             tirage.setNombre_personnes(nbre);
