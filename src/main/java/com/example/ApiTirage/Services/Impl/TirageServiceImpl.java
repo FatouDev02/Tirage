@@ -93,7 +93,7 @@ public class TirageServiceImpl implements TirageService {
     }
 
     @Override
-    public Iterable<Object> listerTiragesParIDliste(Long id_list) {
+    public List<Tirage> listerTiragesParIDliste(Long id_list) {
         return tirageRepository.FIND_TIRAGE_BY_LISTE_ID(id_list);
     }
 }

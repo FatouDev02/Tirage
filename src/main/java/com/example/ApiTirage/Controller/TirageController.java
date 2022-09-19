@@ -45,18 +45,25 @@ public class TirageController {
     public List<Object> f(){
 
         List<Object> list=tirageRepository.FIND_NBRETIRAGE_BY_LISTE_ID();
+
         return list;
     }
 
     @GetMapping("/liste/{id_list}")
-    public Iterable<Object> listerTiragesParIDliste(@PathVariable Long id_list) {
-        return tirageRepository.FIND_TIRAGE_BY_LISTE_ID(id_list);
+    public List<Tirage> listerTiragesParIDliste(@PathVariable Long id_list) {
+        List<Tirage> list=tirageRepository.FIND_TIRAGE_BY_LISTE_ID(id_list);
+        //for (int i=0; i<list.size();i++){
+
+        //    int nbre=list.get(i)[0];
+        //}
+        return  list;
     }
 
     @GetMapping("/listetaille/{id_list}")
-    public int tailleTiragesParIDliste(@PathVariable Long id_list) {
-        List<Object> list=tirageRepository.FIND_NBRETIRAGE_BY_LISTE_ID();
-        return list.size();
+    public Object tailleTiragesParIDliste(@PathVariable Long id_list) {
+        Object list=tirageRepository.NBRETIRAGE_BY_LISTE_ID(id_list);
+
+        return list;
     }
     //recuperer les postulants triés d'un tirage par ID
     @GetMapping("/findposttires/{id_tirage}")
@@ -84,7 +91,9 @@ public class TirageController {
         listeController.creerliste(file,list);
 
         ListImport liste = listeService.recuperer(libelle);
-            //ListImport listImport=listeService.recuperer(libelle_tirage);
+        liste.setNombre_tirage(liste.getNombre_tirage()+1);
+
+        //ListImport listImport=listeService.recuperer(libelle_tirage);
             if(liste !=null){
                 Tirage t=new Tirage();
                 t.setLibelle_tirage(libelle_tirage);
@@ -108,6 +117,8 @@ public class TirageController {
 //        listeController.creerliste(file,list);
 
         ListImport liste = listeService.recuperer(libelle);
+        liste.setNombre_tirage(liste.getNombre_tirage()+1);
+
         //ListImport listImport=listeService.recuperer(libelle_tirage);
         if(liste !=null){
             Tirage t=new Tirage();

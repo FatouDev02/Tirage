@@ -20,6 +20,6 @@ public interface TirageService {
     List<Postulants> creerTirage(Tirage tirage,List<Postulants> postulants, int nombre_personnes);
 
     Object listerTiragesParLibbelleliste(String libelle_tirage);
-    Iterable<Object> listerTiragesParIDliste(Long id_list);
+    List<Tirage> listerTiragesParIDliste(Long id_list);
 
 }

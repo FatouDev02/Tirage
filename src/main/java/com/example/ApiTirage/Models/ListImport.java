@@ -14,6 +14,7 @@ public class ListImport {
     private Long id_list;
     private String libelle;
     private Date dateimport;
+    private int nombre_tirage=0;
 
     @JsonIgnore
     @OneToMany(mappedBy = "listImport")
