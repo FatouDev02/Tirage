@@ -27,7 +27,7 @@ public class ListeServiceImpl implements ListeService {
 
     @Override
     public ListImport afficherParId(Long id_list) {
-        return null;
+        return listeRepository.findById(id_list).get();
     }
 
 

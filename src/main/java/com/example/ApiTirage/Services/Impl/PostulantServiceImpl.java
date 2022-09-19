@@ -25,6 +25,11 @@ public class PostulantServiceImpl implements PostulantServices {
     public List<Postulants> liste(ListImport listImport) {
         return postulantRepository.findByListImport(listImport);
     }
+    @Override
+    public List<Postulants> lister() {
+
+        return postulantRepository.findAll();
+    }
 
 
     @Override

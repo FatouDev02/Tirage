@@ -19,6 +19,7 @@ import java.util.Random;
 public class TirageServiceImpl implements TirageService {
     private final TirageRepository tirageRepository;
     private final PostulantRepository postulantRepository;
+
     @Override
     public Tirage creer(Tirage tirage) {
 
@@ -30,6 +31,8 @@ public class TirageServiceImpl implements TirageService {
         tirageRepository.deleteById(id_tirage);
         return "Le tirage a été supprimé avec succès !";
     }
+
+
 
     @Override
     public List<Tirage> liste() {
@@ -74,13 +77,24 @@ public class TirageServiceImpl implements TirageService {
             postulants.remove(postulants.get(numero));
 
         }
-        Tirage tirage1=tirageRepository.save(tirage);
-        for(Postulants p:list){
+        Tirage tirage1 = tirageRepository.save(tirage);
+        for (Postulants p : list) {
             p.getTirages().add(tirage1);
             postulantRepository.save(p);
 
         }
         tirageRepository.save(tirage);
-        return  list;
+        return list;
+    }
+
+    @Override
+    public Object listerTiragesParLibbelleliste(String libelle_tirage) {
+        return null;
+    }
+
+    @Override
+    public Iterable<Object> listerTiragesParIDliste(Long id_list) {
+        return tirageRepository.FIND_TIRAGE_BY_LISTE_ID(id_list);
     }
 }
+

@@ -2,6 +2,7 @@ package com.example.ApiTirage.Controller;
 
 import com.example.ApiTirage.Models.ListImport;
 import com.example.ApiTirage.Models.Postulants;
+import com.example.ApiTirage.Services.ListeService;
 import com.example.ApiTirage.Services.PostulantServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,15 +21,24 @@ public class PostulantsController {
     @Autowired
     PostulantServices postulantServices;
 
+    @Autowired
+    ListeService listeService;
     @PostMapping("/add")
     public Postulants ajout(@RequestBody Postulants postulants) {
 
         return this.postulantServices.Ajout(postulants);
     }
 
-    @GetMapping("/list")
-    public List<Postulants> l(@RequestBody ListImport l) {
+    @GetMapping("/list/{id}")
+    public List<Postulants> l(@PathVariable Long id) {
+        ListImport l=listeService.afficherParId(id);
         return postulantServices.liste(l);
+    }
+
+    @GetMapping("/afficher")
+    public List<Postulants> l() {
+
+        return postulantServices.lister();
     }
 
     @PutMapping("/update/{Id_postulant}")
@@ -43,5 +53,6 @@ public class PostulantsController {
         postulantServices.SupprimerbyId(Id_postulant);
         return "Postulant supprimé!!!";
     }
+
 
 }

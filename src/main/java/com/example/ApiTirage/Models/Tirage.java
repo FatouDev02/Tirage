@@ -14,13 +14,14 @@ public class Tirage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_tirage;
+    @Column(unique=true )
     private  String libelle_tirage;
     private Date date_tirage;
     private int nbredepostulants;
             // private int nombre_personnes;
-
     @ManyToMany(mappedBy = "tirages")
     List<Postulants> postulant1;
+
 
 
 

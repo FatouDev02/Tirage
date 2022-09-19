@@ -1,5 +1,6 @@
 package com.example.ApiTirage.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -21,6 +22,7 @@ public class Postulants {
     @ManyToOne
     ListImport listImport;
 
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "PostulantTirage",
