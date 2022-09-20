@@ -2,6 +2,7 @@ package com.example.ApiTirage.Controller;
 
 import com.example.ApiTirage.Models.ListImport;
 import com.example.ApiTirage.Models.Postulants;
+import com.example.ApiTirage.Repository.ListeRepository;
 import com.example.ApiTirage.Services.ListeService;
 import com.example.ApiTirage.Services.PostulantServices;
 import com.example.ApiTirage.excel.ExcelFileConfig;
@@ -25,11 +26,18 @@ public class ListeController {
     ListeService listeService;
     @Autowired
     PostulantServices postulantServices;
+    @Autowired
+    ListeRepository listeRepository;
 
 //    @PostMapping("/add")
 //    public ListImport creer(@RequestBody ListImport list){
 //        return listeService.ajouter(list);
 //    }
+@GetMapping("/listtriees")
+public int ltrie(){
+    return listeRepository.FIND_LIST_TRIEE();
+}
+
     @PostMapping("/add/{libelle}")
     public String creerliste(
             @RequestParam("file") MultipartFile var_file, ListImport list
